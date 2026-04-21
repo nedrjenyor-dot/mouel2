@@ -49,14 +49,12 @@
       border-bottom: 3px solid var(--gold);
     }
 
-    /* Brand */
     .nav-brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
     }
-    /* شعار شريط التنقل */
     .nav-brand .logo-wrap {
       width: 85px;
       height: 85px;
@@ -83,7 +81,6 @@
       margin-top: 57px;
       transform-origin: center center;
     }
-    /* اختفاء الشعار عند التمرير للأسفل */
     #topbar.scrolled .nav-brand .logo-wrap {
       opacity: 0;
       transform: scale(0);
@@ -111,7 +108,6 @@
       font-weight: 400;
     }
 
-    /* Desktop nav links */
     .nav-links {
       display: flex;
       align-items: center;
@@ -144,7 +140,6 @@
       border-bottom: 2px solid var(--gold);
     }
 
-    /* Hamburger (mobile only) */
     #hamburger {
       display: none;
       flex-direction: column;
@@ -168,7 +163,6 @@
     #hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     #hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-    /* Mobile drawer */
     #mobile-drawer {
       display: none;
       position: fixed;
@@ -308,7 +302,6 @@
       overflow: hidden;
       padding: 60px 40px;
     }
-    /* ختم الموبايل */
     .hero-stamp-mobile {
       display: none;
     }
@@ -396,7 +389,6 @@
     }
     .hero-logo img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* شعار الهيرو */
     .hero-logo-main {
       position: absolute;
       left: 3%;
@@ -421,7 +413,6 @@
       object-position: center center;
       display: block;
     }
-    /* ختم الديسكتوب */
     .hero-stamp-mobile {
       display: none;
       justify-content: center;
@@ -492,67 +483,81 @@
     .about-intro-inner p:last-child { margin-bottom: 0; }
 
     /* شريط الشركاء المتحرك */
-    .partners-ticker-section {
-      background: var(--primary);
-      border-top: 3px solid var(--gold);
-      border-bottom: 3px solid var(--gold);
-      padding: 0;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
+    .partners-grid-section {
+      background: var(--bg);
+      padding: 56px 40px;
     }
-    .partners-ticker-label {
-      flex-shrink: 0;
-      background: var(--gold);
-      color: var(--primary-d);
+    .partners-grid-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .partners-grid-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .partners-grid-title h2 {
+      font-size: 1.5rem;
       font-weight: 800;
-      font-size: 0.88rem;
-      padding: 18px 22px;
-      letter-spacing: 1px;
-      white-space: nowrap;
-      z-index: 2;
+      color: var(--primary);
+      margin-bottom: 10px;
     }
-    .partners-ticker-track-wrap {
-      flex: 1;
-      overflow: hidden;
-      mask-image: linear-gradient(to left, transparent 0%, black 6%, black 94%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to left, transparent 0%, black 6%, black 94%, transparent 100%);
+    .partners-slider-wrap {
+      overflow-x: auto;
+      overflow-y: hidden;
+      cursor: grab;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 8px 0 16px;
     }
-    .partners-ticker-track {
+    .partners-slider-wrap::-webkit-scrollbar { display: none; }
+    .partners-slider-wrap.dragging { cursor: grabbing; scroll-behavior: auto; }
+    .partners-slider-track {
       display: flex;
-      align-items: center;
-      gap: 0;
+      gap: 20px;
       width: max-content;
-      padding: 14px 0;
-      will-change: transform;
+      padding: 4px 2px 12px;
     }
-    .ticker-item {
+    .slider-partner-card {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 28px 24px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 14px;
       flex-shrink: 0;
-      padding: 0 36px;
-      border-right: 1px solid rgba(255,255,255,0.15);
+      width: 210px;
+      min-width: 210px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      user-select: none;
     }
-    .ticker-item img {
-      width: 110px;
-      height: 52px;
+    .slider-partner-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .slider-partner-card img {
+      width: 130px;
+      height: 65px;
       object-fit: contain;
-      background: #fff;
-      border-radius: 6px;
-      padding: 6px 10px;
+      pointer-events: none;
+      display: block;
     }
-    .ticker-item span {
+    .slider-partner-card span {
       font-size: 0.82rem;
-      font-weight: 700;
-      color: #ffffff;
-      white-space: nowrap;
-      line-height: 1.4;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      font-weight: 600;
+      color: var(--text-l);
+      text-align: center;
+      line-height: 1.6;
+      white-space: normal;
+      max-width: 160px;
+      pointer-events: none;
     }
 
-    /* Section title */
     .section-title {
       margin-bottom: 32px;
     }
@@ -574,7 +579,6 @@
       max-width: 550px;
     }
 
-    /* About intro block */
     .about-intro {
       background: var(--white);
       border-right: 5px solid var(--primary);
@@ -589,7 +593,6 @@
       color: var(--text);
     }
 
-    /* VMV Grid */
     .vmv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
     .vmv-card {
       background: var(--white);
@@ -808,7 +811,6 @@
       flex-wrap: wrap;
     }
 
-    /* Services grid */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
     .service-card {
       background: var(--white);
@@ -831,7 +833,6 @@
     .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
     .service-card p { font-size: 0.82rem; color: var(--text-l); line-height: 1.7; }
 
-    /* Team */
     .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .team-card {
       background: var(--white);
@@ -854,7 +855,6 @@
     .team-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
     .team-card span { font-size: 0.78rem; color: var(--text-l); }
 
-    /* News */
     .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
     .news-card {
       background: var(--white);
@@ -891,7 +891,7 @@
       cursor: pointer;
     }
 
-    /* Publications */
+    /* المنشورات */
     .pubs-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item {
       background: var(--white);
@@ -1767,6 +1767,7 @@
       .partner-logo-rect { width: 80px; height: 60px; }
       .partner-card-name { font-size: 0.88rem; }
       .partner-card-desc { font-size: 0.78rem; }
+      .partner-card-info { text-align: right; }
       .contact-grid { grid-template-columns: 1fr; }
       .main-services-grid { grid-template-columns: repeat(2, 1fr); }
       .awareness-facts { grid-template-columns: repeat(2, 1fr); }
@@ -1791,10 +1792,33 @@
       .main-services-section { padding: 36px 16px; }
       .about-intro-section { padding: 36px 20px; }
       .about-intro-inner p { font-size: 0.88rem; }
-      .partners-ticker-label { font-size: 0.75rem; padding: 14px 14px; }
-      .ticker-item img { width: 90px; height: 44px; }
-      .ticker-item span { font-size: 0.72rem; }
-      .ticker-item { padding: 0 18px; }
+      .partners-grid-section { padding: 36px 0; }
+      /* بطاقات الشركاء على الموبايل: الصورة فوق والنص تحت */
+      .partner-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 16px;
+        gap: 12px;
+      }
+      .partner-logo-rect {
+        width: 110px;
+        height: 80px;
+        margin: 0 auto;
+      }
+      .partner-card-info {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+      .partner-card-name {
+        text-align: center;
+        font-size: 0.9rem;
+      }
+      .partner-card-desc {
+        text-align: center;
+        font-size: 0.78rem;
+      }
       .awareness-section { padding: 40px 16px; }
       .awareness-inner h2 { font-size: 1.45rem; }
       .awareness-fact { font-size: 0.82rem; padding: 11px 16px; }
@@ -1886,7 +1910,6 @@
       </div>
     </a>
 
-    <!-- Desktop nav links -->
     <ul class="nav-links" id="desktopNav">
       <li><a href="./" onclick="showPage('home'); return false;" id="nav-home" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
       <li><a href="/about" onclick="showPage('about'); return false;" id="nav-about"><i class="fas fa-info-circle"></i> عن الجمعية</a></li>
@@ -1897,13 +1920,11 @@
       <li><a href="/contact" onclick="showPage('contact'); return false;" id="nav-contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
     </ul>
 
-    <!-- Hamburger (mobile) -->
     <div id="hamburger" onclick="toggleDrawer()">
       <span></span><span></span><span></span>
     </div>
   </nav>
 
-  <!-- Mobile Drawer -->
   <div id="mobile-drawer">
     <a href="./" onclick="showPage('home'); closeDrawer(); return false;"><i class="fas fa-home"></i> الرئيسية</a>
     <a href="/about" onclick="showPage('about'); closeDrawer(); return false;"><i class="fas fa-info-circle"></i> عن الجمعية</a>
@@ -1926,7 +1947,6 @@
     
     <div id="page-home" class="page active">
 
-      <!-- Hero -->
       <section class="hero">
         <div class="hero-content">
           <div class="hero-badge"><i class="fas fa-star"></i> جمعية معتمدة لتقديم الخدمات النفسية والاجتماعية</div>
@@ -1939,14 +1959,12 @@
             <a class="btn-primary" href="#" onclick="scrollToServices(); return false;"><i class="fas fa-th-large"></i> تعرف على خدماتنا</a>
             <a class="btn-outline" href="/about" onclick="showPage('about'); return false;"><i class="fas fa-info-circle"></i> تعرّف علينا</a>
           </div>
-          <!-- ختم الموبايل — مدمج داخل Hero ويظهر تحت الأزرار -->
           <div class="hero-stamp-mobile">
             <div class="stamp-circle">
               <img src="images/stamp.png" alt="ختم موئل الرسمي" />
             </div>
           </div>
         </div>
-        <!-- Hero Visible Stamp (Desktop) -->
         <div class="hero-logo-main">
           <img src="images/stamp.png" alt="ختم موئل الرسمي" />
         </div>
@@ -1954,8 +1972,6 @@
 
 
 
-      <!-- Stats Section — new card design -->
-      
       <section class="about-intro-section">
         <div class="about-intro-inner">
           <p>تُعد جمعية موئل من الجمعيات غير الربحية التي تسعى إلى تقديم الدعم النفسي والاجتماعي للأفراد والمجتمع، انطلاقًا من إيمانها بأهمية الصحة النفسية كركيزة أساسية لحياة متوازنة ومستقرة. تعمل الجمعية على توفير برامج إرشادية وتوعوية تهدف إلى تعزيز الوعي النفسي، ومساعدة الأفراد على مواجهة التحديات الحياتية بطرق صحية وإيجابية.</p>
@@ -1965,13 +1981,18 @@
       </section>
 
       
-      <section class="partners-ticker-section">
-        <div class="partners-ticker-label">شركاؤنا</div>
-        <div class="partners-ticker-track-wrap">
-          <div class="partners-ticker-track" id="tickerTrack">
-            <div class="ticker-item"><img src="images/partner-moh.png" alt="وزارة الصحة" /><span>وزارة الصحة</span></div>
-            <div class="ticker-item"><img src="images/partner-hrsd.png" alt="وزارة الموارد البشرية" /><span>وزارة الموارد البشرية والتنمية الاجتماعية</span></div>
-            <div class="ticker-item"><img src="images/partner-ncnp.png" alt="المركز الوطني" /><span>المركز الوطني لتنمية القطاع غير الربحي</span></div>
+      <section class="partners-grid-section">
+        <div class="partners-grid-inner">
+          <div class="partners-grid-title">
+            <h2>شركاء النجاح</h2>
+            <div class="underline"></div>
+          </div>
+          <div class="partners-slider-wrap" id="partnersSlider">
+            <div class="partners-slider-track">
+              <div class="slider-partner-card"><img src="images/partner-moh.png" alt="وزارة الصحة" /><span>وزارة الصحة</span></div>
+              <div class="slider-partner-card"><img src="images/partner-hrsd.png" alt="وزارة الموارد البشرية" /><span>وزارة الموارد البشرية والتنمية الاجتماعية</span></div>
+              <div class="slider-partner-card"><img src="images/partner-ncnp.png" alt="المركز الوطني" /><span>المركز الوطني لتنمية القطاع غير الربحي</span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -2032,7 +2053,6 @@
         </div>
       </section>
 
-      <!-- Awareness Section -->
       <section class="awareness-section">
         <div class="awareness-inner">
           <div class="awareness-badge"><i class="fas fa-leaf"></i> التوعية النفسية</div>
@@ -2148,7 +2168,6 @@
               </div>
             </div>
           </div>
-          <!-- خالد رزيقي -->
           <div class="board-card board-card-photo">
             <img class="board-member-img board-img-sm" src="images/board-khaled.jpg" alt="خالد محمد رزيقي" />
             <div class="board-card-body">
@@ -2161,7 +2180,6 @@
             </div>
           </div>
 
-          <!-- حسين اليامي -->
           <div class="board-card board-card-photo">
             <img class="board-member-img" src="images/board-hussain.jpg" alt="حسين مسعود اليامي" />
             <div class="board-card-body">
@@ -2174,7 +2192,6 @@
             </div>
           </div>
 
-          <!-- حسن الأسمري -->
           <div class="board-card board-card-photo">
             <img class="board-member-img" src="images/board-hassan.jpg" alt="حسن علي الأسمري" />
             <div class="board-card-body">
@@ -2186,7 +2203,6 @@
               </div>
             </div>
           </div>
-          <!-- محسن القحطاني -->
           <div class="board-card">
             <div class="board-avatar">م.ق</div>
             <h4>محسن علي شبيب القحطاني</h4>
@@ -2197,7 +2213,6 @@
             </div>
           </div>
 
-          <!-- ياسر الحازمي -->
           <div class="board-card board-card-photo">
             <img class="board-member-img" src="images/board-yaser.jpg" alt="ياسر بن محسن الحازمي" style="object-position: center 50%;" />
             <div class="board-card-body">
@@ -2209,7 +2224,6 @@
             </div>
           </div>
 
-          <!-- عبدالله القصير -->
           <div class="board-card">
             <div class="board-avatar">ع.ق</div>
             <h4>عبدالله تركي القصير</h4>
@@ -2223,28 +2237,24 @@
         <div class="section-title"><h2>الوثائق الرسمية</h2><div class="underline"></div></div>
         <div class="docs-grid">
 
-          <!-- شهادة الترخيص -->
           <a class="doc-card" href="files/license-certificate.pdf" download="شهادة-الترخيص-جمعية-موئل.pdf" target="_blank">
             <div class="doc-icon-wrap"><i class="fas fa-certificate"></i></div>
             <h4>شهادة الترخيص</h4>
             <span class="doc-dl-btn"><i class="fas fa-download"></i> تنزيل PDF</span>
           </a>
 
-          <!-- قرار تسجيل الجمعية -->
           <a class="doc-card" href="files/registration-decision.pdf" download="قرار-تسجيل-الجمعية.pdf" target="_blank">
             <div class="doc-icon-wrap"><i class="fas fa-file-signature"></i></div>
             <h4>قرار تسجيل الجمعية</h4>
             <span class="doc-dl-btn"><i class="fas fa-download"></i> تنزيل PDF</span>
           </a>
 
-          <!-- لائحة السياسات -->
           <a class="doc-card" href="files/policies-manual.pdf" download="لائحة-السياسات.pdf" target="_blank">
             <div class="doc-icon-wrap"><i class="fas fa-list-alt"></i></div>
             <h4>لائحة السياسات</h4>
             <span class="doc-dl-btn"><i class="fas fa-download"></i> تنزيل PDF</span>
           </a>
 
-          <!-- التقرير السنوي — بدون ملف حالياً -->
           <div class="doc-card">
             <div class="doc-icon-wrap"><i class="fas fa-chart-bar"></i></div>
             <h4>التقرير السنوي</h4>
@@ -2578,13 +2588,11 @@
       currentPage = name;
       const mobileLinks = document.querySelectorAll('#mobile-drawer a:not(.drawer-social a)');
       mobileLinks.forEach(l => l.classList.remove('active'));
-      // تحديث الـ URL بمسار نظيف /about /contact إلخ
       const newUrl = name === 'home' ? '/' : '/' + name;
       if (location.pathname !== newUrl) history.pushState({ page: name }, '', newUrl);
       return false;
     }
 
-    // قراءة الصفحة من المسار عند التحميل أو الرجوع
     function loadPageFromUrl() {
       const path = location.pathname.replace(/^\//, '').replace(/\/$/, '');
       const page = validPages.includes(path) ? path : 'home';
@@ -2592,7 +2600,6 @@
     }
     window.addEventListener('popstate', loadPageFromUrl);
 
-    // القائمة الجانبية
     function toggleDrawer() {
       const hb = document.getElementById('hamburger');
       const dr = document.getElementById('mobile-drawer');
@@ -2603,7 +2610,6 @@
       document.getElementById('hamburger').classList.remove('open');
       document.getElementById('mobile-drawer').classList.remove('open');
     }
-    // إغلاق القائمة عند النقر خارجها
     document.addEventListener('click', function(e) {
       const hb = document.getElementById('hamburger');
       const dr = document.getElementById('mobile-drawer');
@@ -2612,7 +2618,6 @@
       }
     });
 
-    // أنيميشن الأرقام
     function animateCounters() {
       const counters = document.querySelectorAll('.stat-num[data-target]');
       counters.forEach(counter => {
@@ -2643,46 +2648,8 @@
         dateInput.min = `${yyyy}-${mm}-${dd}`;
       }
 
-      // شريط الشركاء المتحرك
-      const track = document.getElementById('tickerTrack');
-      if (track) {
-        // احتفظ بالعناصر الأصلية فقط (الأولى 3)
-        const originalItems = Array.from(track.children).slice(0, 3);
-
-        // احذف كل العناصر واستبدلها بالأصلية فقط
-        track.innerHTML = '';
-        originalItems.forEach(el => track.appendChild(el));
-
-        // انتظر تحميل الصور لحساب العرض الصحيح
-        setTimeout(() => {
-          const itemsWidth = track.scrollWidth;
-
-          // أضف نسخاً كافية لملء الشاشة مرتين على الأقل
-          const screenW = window.innerWidth;
-          const copies = Math.ceil((screenW * 3) / itemsWidth) + 2;
-          for (let i = 0; i < copies; i++) {
-            originalItems.forEach(el => {
-              track.appendChild(el.cloneNode(true));
-            });
-          }
-
-          // شغّل الأنيميشن بناءً على عرض المجموعة الأصلية
-          const singleSetWidth = itemsWidth;
-          let pos = 0;
-          const speed = 0.5; // بكسل لكل frame
-
-          function step() {
-            pos += speed;
-            if (pos >= singleSetWidth) pos -= singleSetWidth;
-            track.style.transform = `translateX(-${pos}px)`;
-            requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
-        }, 200);
-      }
     });
 
-    // نموذج الحجز
     let currentStep = 1;
     let selectedTime = '';
 
@@ -2748,10 +2715,7 @@
       const waUrl = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(msg);
       window.open(waUrl, '_blank');
 
-      // إعادة تعيين النموذج بعد ثانيتين
-      setTimeout(() => {
-        resetBooking();
-      }, 2000);
+      setTimeout(() => { resetBooking(); }, 2000);
     }
 
     function bookingNext() {
@@ -2771,13 +2735,11 @@
         const date = document.getElementById('f_date').value;
         const mode = document.getElementById('f_mode').value;
         if (!date) { showValidationError('يُرجى تحديد تاريخ الجلسة المفضّل.'); return; }
-        // Validate date is not in the past
         const today = new Date(); today.setHours(0,0,0,0);
         const chosen = new Date(date);
         if (chosen < today) { showValidationError('لا يمكن اختيار تاريخ في الماضي. يُرجى اختيار تاريخ مستقبلي.'); return; }
         if (!mode) { showValidationError('يُرجى اختيار طريقة الجلسة.'); return; }
         clearValidationError();
-        // Fill summary
         document.getElementById('s_name').textContent  = document.getElementById('f_name').value.trim();
         document.getElementById('s_phone').textContent = document.getElementById('f_phone').value.trim();
         document.getElementById('s_type').textContent  = document.getElementById('f_type').value;
@@ -2786,7 +2748,6 @@
         document.getElementById('s_time').textContent  = selectedTime || 'غير محدد';
       }
       if (currentStep === 3) {
-        // منع الإرسال المتكرر في نفس الثانية
         const nextBtn = document.getElementById('nextBtn');
         if (nextBtn.disabled) return;
         nextBtn.disabled = true;
@@ -2798,7 +2759,6 @@
         document.getElementById('bf').style.display = 'none';
         document.getElementById('successMsg').classList.add('show');
 
-        // إعادة تفعيل الزر بعد إعادة التعيين
         setTimeout(() => { nextBtn.disabled = false; }, 3000);
         return;
       }
@@ -2856,7 +2816,7 @@
       if (!wasOpen) item.classList.add('open');
     }
 
-    const COOLDOWN_MS = 3 * 60 * 1000; // 3 دقائق
+    const COOLDOWN_MS = 180000;
     let cooldownTimer = null;
 
     function startCooldown(btn, feedback) {
@@ -2911,7 +2871,6 @@
       const message = document.getElementById('cf_message').value.trim();
       const feedback = document.getElementById('cf_feedback');
 
-      // التحقق من فترة الانتظار
       const stored = localStorage.getItem('mouel_cf_cooldown');
       if (stored && parseInt(stored, 10) > Date.now()) return;
 
@@ -2977,7 +2936,27 @@
       });
     });
 
-    // Scroll to services section
+    (function() {
+      const slider = document.getElementById('partnersSlider');
+      if (!slider) return;
+      let isDown = false, startX, scrollLeft;
+
+      slider.addEventListener('mousedown', e => {
+        isDown = true;
+        slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('dragging'); });
+      slider.addEventListener('mouseup',    () => { isDown = false; slider.classList.remove('dragging'); });
+      slider.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        slider.scrollLeft = scrollLeft - (x - startX);
+      });
+    })();
+
     function scrollToServices() {
       const el = document.getElementById('services-section');
       if (el) {
@@ -2988,7 +2967,6 @@
     (function() {
       var topbar = document.getElementById('topbar');
       function handleScroll() {
-        // نحدد الحاوية الرئيسية للتمرير
         var scrollY = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollY > 80) {
           topbar.classList.add('scrolled');
@@ -2997,12 +2975,11 @@
         }
       }
       window.addEventListener('scroll', handleScroll, { passive: true });
-      // التحقق من الحاوية الداخلية أيضاً
       var mainContent = document.getElementById('main-content');
       if (mainContent) {
         mainContent.addEventListener('scroll', handleScroll, { passive: true });
       }
-      handleScroll(); // تشغيل فوري عند التحميل
+      handleScroll();
     })();
 
 

@@ -1843,13 +1843,13 @@
 
     <!-- Desktop nav links -->
     <ul class="nav-links" id="desktopNav">
-      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
-      <li><a href="#" onclick="showPage('about')" id="nav-about"><i class="fas fa-info-circle"></i> عن الجمعية</a></li>
-      <li><a href="#" onclick="showPage('media')" id="nav-media"><i class="fas fa-newspaper"></i> المركز الإعلامي</a></li>
-      <li><a href="#" onclick="showPage('gov')" id="nav-gov"><i class="fas fa-shield-alt"></i> الحوكمة</a></li>
-      <li><a href="#" onclick="showPage('consult')" id="nav-consult"><i class="fas fa-comments"></i> الاستشارات</a></li>
-      <li><a href="#" onclick="showPage('partners')" id="nav-partners"><i class="fas fa-handshake"></i> الشركاء</a></li>
-      <li><a href="#" onclick="showPage('contact')" id="nav-contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+      <li><a href="#home" onclick="showPage('home'); return false;" id="nav-home" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+      <li><a href="#about" onclick="showPage('about'); return false;" id="nav-about"><i class="fas fa-info-circle"></i> عن الجمعية</a></li>
+      <li><a href="#media" onclick="showPage('media'); return false;" id="nav-media"><i class="fas fa-newspaper"></i> المركز الإعلامي</a></li>
+      <li><a href="#gov" onclick="showPage('gov'); return false;" id="nav-gov"><i class="fas fa-shield-alt"></i> الحوكمة</a></li>
+      <li><a href="#consult" onclick="showPage('consult'); return false;" id="nav-consult"><i class="fas fa-comments"></i> الاستشارات</a></li>
+      <li><a href="#partners" onclick="showPage('partners'); return false;" id="nav-partners"><i class="fas fa-handshake"></i> الشركاء</a></li>
+      <li><a href="#contact" onclick="showPage('contact'); return false;" id="nav-contact"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
     </ul>
 
     <!-- Hamburger (mobile) -->
@@ -1860,13 +1860,13 @@
 
   <!-- Mobile Drawer -->
   <div id="mobile-drawer">
-    <a href="#" onclick="showPage('home'); closeDrawer()"><i class="fas fa-home"></i> الرئيسية</a>
-    <a href="#" onclick="showPage('about'); closeDrawer()"><i class="fas fa-info-circle"></i> عن الجمعية</a>
-    <a href="#" onclick="showPage('media'); closeDrawer()"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
-    <a href="#" onclick="showPage('gov'); closeDrawer()"><i class="fas fa-shield-alt"></i> الحوكمة والشفافية</a>
-    <a href="#" onclick="showPage('consult'); closeDrawer()"><i class="fas fa-comments"></i> الاستشارات</a>
-    <a href="#" onclick="showPage('partners'); closeDrawer()"><i class="fas fa-handshake"></i> الشركاء</a>
-    <a href="#" onclick="showPage('contact'); closeDrawer()"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+    <a href="#home" onclick="showPage('home'); closeDrawer(); return false;"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="#about" onclick="showPage('about'); closeDrawer(); return false;"><i class="fas fa-info-circle"></i> عن الجمعية</a>
+    <a href="#media" onclick="showPage('media'); closeDrawer(); return false;"><i class="fas fa-newspaper"></i> المركز الإعلامي</a>
+    <a href="#gov" onclick="showPage('gov'); closeDrawer(); return false;"><i class="fas fa-shield-alt"></i> الحوكمة والشفافية</a>
+    <a href="#consult" onclick="showPage('consult'); closeDrawer(); return false;"><i class="fas fa-comments"></i> الاستشارات</a>
+    <a href="#partners" onclick="showPage('partners'); closeDrawer(); return false;"><i class="fas fa-handshake"></i> الشركاء</a>
+    <a href="#contact" onclick="showPage('contact'); closeDrawer(); return false;"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
     <div class="drawer-social">
       <a href="https://x.com/mouel2026?s=21" target="_blank"><i class="fab fa-x-twitter"></i></a>
       <a href="https://tiktok.com/@mouel_2026" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -2523,7 +2523,10 @@
     const pages = ['home','about','media','gov','consult','partners','contact'];
     const navIds = ['nav-home','nav-about','nav-media','nav-gov','nav-consult','nav-partners','nav-contact'];
 
+    const validPages = ['home','about','media','gov','consult','partners','contact'];
+
     function showPage(name) {
+      if (!validPages.includes(name)) name = 'home';
       pages.forEach(p => {
         const el = document.getElementById('page-' + p);
         if (el) el.classList.remove('active');
@@ -2540,8 +2543,19 @@
       currentPage = name;
       const mobileLinks = document.querySelectorAll('#mobile-drawer a:not(.drawer-social a)');
       mobileLinks.forEach(l => l.classList.remove('active'));
+      // تحديث الـ URL بدون إعادة تحميل
+      const newHash = name === 'home' ? '#' : '#' + name;
+      if (location.hash !== newHash) history.pushState(null, '', newHash);
       return false;
     }
+
+    // قراءة الصفحة من الـ URL عند التحميل أو التنقل
+    function loadPageFromHash() {
+      const hash = location.hash.replace('#', '').trim();
+      const page = validPages.includes(hash) ? hash : 'home';
+      showPage(page);
+    }
+    window.addEventListener('popstate', loadPageFromHash);
 
     // القائمة الجانبية
     function toggleDrawer() {
@@ -2581,6 +2595,7 @@
       });
     }
     window.addEventListener('load', () => {
+      loadPageFromHash();
       setTimeout(animateCounters, 400);
       checkCooldownOnLoad();
 

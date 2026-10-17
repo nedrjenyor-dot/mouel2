@@ -5,7 +5,7 @@ Allow: /
 Disallow: /files/
 
 # خريطة الموقع
-Sitemap: https://mouel.org/sitemap.xml
+Sitemap: https://mouel.org.sa/sitemap.xml
 
 # منح الأولوية لعناكب البحث الرئيسية
 User-agent: Googlebot
